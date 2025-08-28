@@ -47,15 +47,33 @@ function MyTrips() {
   }
 
   return (
-    <div className="p-10">
-      <h2 className="text-3xl font-bold mb-6 text-gray-900">My Trips</h2>
+    <div className="p-10" style={{ minHeight: '100vh', backgroundColor: '#ffffff' }}>
+      <h2 
+        className="text-3xl font-bold mb-6" 
+        style={{ color: '#000000', fontSize: '2rem', fontWeight: 'bold' }}
+      >
+        My Trips
+      </h2>
       
       {userTrips.length === 0 ? (
         <div className="text-center">
-          <p className="text-gray-700 mb-4 text-lg">No trips found. Create your first trip!</p>
+          <p 
+            className="mb-4 text-lg" 
+            style={{ color: '#333333', fontSize: '1.125rem' }}
+          >
+            No trips found. Create your first trip!
+          </p>
           <button 
             onClick={() => navigate('/create-trip')}
-            className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600"
+            className="px-6 py-2 rounded-lg"
+            style={{ 
+              backgroundColor: '#2563eb', 
+              color: '#ffffff', 
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '1rem',
+              fontWeight: '500'
+            }}
           >
             Create Trip
           </button>
@@ -63,33 +81,57 @@ function MyTrips() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {userTrips.map((trip) => (
-            <div key={trip.id} className="border-2 border-gray-200 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow bg-white">
-              <h3 className="text-xl font-bold mb-3 text-gray-900">
+            <div 
+              key={trip.id} 
+              className="rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow"
+              style={{ 
+                border: '2px solid #d1d5db', 
+                backgroundColor: '#ffffff',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+              }}
+            >
+              <h3 
+                className="text-xl font-bold mb-3"
+                style={{ color: '#000000', fontSize: '1.25rem', fontWeight: 'bold' }}
+              >
                 {trip.userSelection?.location?.label || 'Unknown Destination'}
               </h3>
-              <div className="text-sm text-gray-800 space-y-2 font-medium">
-                <p className="flex items-center gap-2">
-                  <span className="text-blue-600">📅</span> 
-                  <span className="text-gray-700">{trip.userSelection?.noOfDays} Days</span>
+              <div className="space-y-2" style={{ fontSize: '0.875rem' }}>
+                <p style={{ color: '#374151', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span>📅</span> 
+                  <span style={{ fontWeight: '500' }}>{trip.userSelection?.noOfDays} Days</span>
                 </p>
-                <p className="flex items-center gap-2">
-                  <span className="text-green-600">💰</span> 
-                  <span className="text-gray-700">{trip.userSelection?.budget} Budget</span>
+                <p style={{ color: '#374151', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span>💰</span> 
+                  <span style={{ fontWeight: '500' }}>{trip.userSelection?.budget} Budget</span>
                 </p>
-                <p className="flex items-center gap-2">
-                  <span className="text-purple-600">👥</span> 
-                  <span className="text-gray-700">{trip.userSelection?.traveler} Travelers</span>
+                <p style={{ color: '#374151', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span>👥</span> 
+                  <span style={{ fontWeight: '500' }}>{trip.userSelection?.traveler} Travelers</span>
                 </p>
                 {trip.createdAt && (
-                  <p className="flex items-center gap-2">
-                    <span className="text-orange-600">📝</span> 
-                    <span className="text-gray-700">Created: {new Date(trip.createdAt).toLocaleDateString()}</span>
+                  <p style={{ color: '#374151', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span>📝</span> 
+                    <span style={{ fontWeight: '500' }}>
+                      Created: {new Date(trip.createdAt).toLocaleDateString()}
+                    </span>
                   </p>
                 )}
               </div>
               <button 
                 onClick={() => navigate(`/view-trip/${trip.id}`)}
-                className="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold text-sm"
+                className="mt-6 w-full py-3 rounded-lg transition-colors"
+                style={{
+                  backgroundColor: '#1d4ed8',
+                  color: '#ffffff',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontSize: '0.875rem',
+                  fontWeight: '600',
+                  width: '100%'
+                }}
+                onMouseOver={(e) => e.target.style.backgroundColor = '#1e40af'}
+                onMouseOut={(e) => e.target.style.backgroundColor = '#1d4ed8'}
               >
                 View Trip Details
               </button>
