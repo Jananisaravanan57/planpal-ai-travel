@@ -4,7 +4,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "../ui/popover"
 import { toast } from 'sonner';
 import axios from 'axios';
 import { useNavigation } from 'react-router-dom';
@@ -16,7 +16,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "../ui/dialog" 
 
 import { FcGoogle } from "react-icons/fc";
 
